@@ -78,7 +78,7 @@ Although you can use them, for a more unique website, replace these images with 
 		<div class="container">
 			<h1><span class="glyphicon glyphicon-equalizer"></span> Dramatically Engage</h1>
 			<p>Objectively innovate empowered manufactured products whereas parallel platforms.</p>
-			<p><a class="btn btn-primary" href="#">Engage Now</a></p>
+			<p><a OnClick="GreenOnClick()" class="btn btn-primary" href="#">Engage Now</a></p>
 		</div>
 	</div>
 
@@ -98,14 +98,14 @@ Although you can use them, for a more unique website, replace these images with 
         <div class="row promo">
         	<a href="#">
 				<div class="col-md-4 promo-item item-1">
-					<h3>
-						Unleash
+					<h3 onmouseover="WhiteOnClick(this)">
+						 Unleash
 					</h3>
 				</div>
             </a>
             <a href="#">
 				<div class="col-md-4 promo-item item-2">
-					<h3>
+					<h3 onmouseover="WhiteOnClick(this)">
 						Synergize
 					</h3>
 				</div>
@@ -113,7 +113,7 @@ Although you can use them, for a more unique website, replace these images with 
 			
 			<a href="#">
 				<div class="col-md-4 promo-item item-3">
-					<h3>
+					<h3 onmouseover="WhiteOnClick(this)">
 						Procrastinate
 					</h3>
 				</div>
@@ -320,14 +320,27 @@ Although you can use them, for a more unique website, replace these images with 
 
 </html>
 <script>
-const h1Array = [...document.getElementsByTagName('h1')];
-h1Array.forEach(function(element) {
+const h3List = document.getElementsByTagName('h3');
+let h3Array = new Array();
+for (let i=0;i<h3List.length;i++) {
+h3Array.push(h3List[i]);
+}
+
+
+function GreenOnClick() {
+for (let j=0;j<h3Array.length;j++) {
+if (j<=2) {
+	h3Array[j].style.color = "#00cc00";
+	h3Array[j].innerHTML = "Applause"
+		}	
+}
+h3Array.forEach(function(element) {
 	console.log(element);
-	if (element.textContent.indexOf("Dramatically Engage") > -1) {
-	element = element.style.color = "#ff66b3";
-	} else  {
-		element = element.style.color = "#ff0000";
-		}
-	element = element.style.fontFamily = "Cursive";
 })
+}
+
+function WhiteOnClick(element) {
+	element.style.color = "#ffffff";
+		
+}
 </script>
