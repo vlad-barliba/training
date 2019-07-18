@@ -83,8 +83,8 @@ Although you can use them, for a more unique website, replace these images with 
         <div class="container">
             <h1><span class="glyphicon glyphicon-equalizer"></span> Dramatically Engage</h1>
             <p>Objectively innovate empowered manufactured products whereas parallel platforms.</p>
-            btn.onclick=changeColorGreen;
-            <p><a class="btn btn-primary" onclick="changeColorGreen()" href="#">Engage Now</a></p>
+         
+            <p><a class="btn btn-primary" onclick="changeColorGreen()"  href="#">Engage Now</a></p>
         </div>
     </div>
 
@@ -107,7 +107,7 @@ Although you can use them, for a more unique website, replace these images with 
         <div class="row promo">
             <a href="#">
                 <div class="col-md-4 promo-item item-1">
-                    <h3 onmouseover="hoverFunction(this)">
+                    <h3 onmouseover="hoverFunction(this)" onmouseout="hoverOutFunction(this)">
                         Unleash
                     </h3>
                 </div>
@@ -360,7 +360,7 @@ Although you can use them, for a more unique website, replace these images with 
             for (let i = 0; i < elements.length; i++) {
 
                 array.push(elements[i].textContent);
-                // console.log(array.indexOf(array[i]));
+               
                 if (i < 3) {
                     elements[i].style.color = "green";
                     elements[i].style.fon = "green";
@@ -369,14 +369,21 @@ Although you can use them, for a more unique website, replace these images with 
             }
 
         }
+      
         function hoverFunction(element) {
 
-           element.style.color="red";
+            element.style.color = "red";
+
+        }
+
+        function hoverOutFunction(element) {
+
+            element.style.color = "white";
 
         }
 
         changeColor();
-        //changeColorGreen();
+       
     </script>
 
 </body>
