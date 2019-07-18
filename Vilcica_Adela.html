@@ -75,9 +75,9 @@ Although you can use them, for a more unique website, replace these images with 
 	<!-- Feature -->
 	<div class="jumbotron feature">
 		<div class="container">
-			<h1><span class="glyphicon glyphicon-equalizer"></span> Dramatically Engage</h1>
+			<h1  onclick="request()"><span class="glyphicon glyphicon-equalizer"></span> Dramatically Engage</h1>
 			<p>Objectively innovate empowered manufactured products whereas parallel platforms.</p>
-			<button onclick="getColor()">Engage Now</button>
+			<button onclick="changeColor()">Engage Now</button>
 		</div>
 	</div>
 
@@ -122,7 +122,7 @@ Although you can use them, for a more unique website, replace these images with 
 
 	<!-- Featured Products -->
 	<div class="container">
-		<h1 class="text-center">World Class Products</h1>
+		<h1   class="text-center">World Class Products</h1>
 		<div class="row">
 		
 			<!-- Product 1 -->
@@ -191,7 +191,7 @@ Although you can use them, for a more unique website, replace these images with 
 							<input type="number" class="form-control" value="1">
 							<span class="input-group-btn">
 								<button class="btn btn-primary" type="button">
-									<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> 
+									<span  class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> 
 									Add to Cart
 								</button>
 							</span>
@@ -343,6 +343,26 @@ Although you can use them, for a more unique website, replace these images with 
 	{
 		element.style.color="pink";
         };
+    function request(){
+    	var promise=new Promise(function req(){
+    	var xhr= new XMLHttpRequest(),
+    	method="GET",
+    	url="https://jsonplaceholder.typicode.com/posts/1";
+    	
+    	xhr.onreadystatechange=function(){
+    		if(xhr.readyState===4){
+    			console.log(xhr.response);
+    		}
+    	}
+    	
+    	xhr.open(method,url,true);
+    	xhr.send('');
+});
+    	promise.then(function req(){
+    		console.log(xhr.response);
+    		//request();
+    	});
+}
 </script>
 		
 		
