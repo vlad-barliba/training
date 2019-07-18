@@ -141,7 +141,7 @@ Although you can use them, for a more unique website, replace these images with 
 						<div class="input-group">
 							<input type="number" class="form-control" value="1">
 							<span class="input-group-btn">
-								<button class="btn btn-primary" type="button">
+								<button onclick="requestDummy()" class="btn btn-primary" type="button">
 									<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> 
 									Add to Cart
 								</button>
@@ -343,4 +343,17 @@ function WhiteOnClick(element) {
 	element.style.color = "#ffffff";
 		
 }
+function requestDummy() {
+const request = new XMLHttpRequest();
+request.onreadystatechange = function() {
+	console.log('A');
+	if (request.readyState === 4) {
+		console.log(request.responseText);
+	}
+}
+	request.open('GET', 'https://jsonplaceholder.typicode.com/posts/1');
+	request.send();
+	
+}
+
 </script>
