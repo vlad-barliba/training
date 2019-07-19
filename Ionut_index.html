@@ -343,7 +343,7 @@ function WhiteOnClick(element) {
 	element.style.color = "#ffffff";
 		
 }
-function requestDummy() {
+/* function requestDummy() {
 const request = new XMLHttpRequest();
 request.onreadystatechange = function() {
 	console.log('A');
@@ -354,6 +354,28 @@ request.onreadystatechange = function() {
 	request.open('GET', 'https://jsonplaceholder.typicode.com/posts/1');
 	request.send();
 	
+} */
+function requestDummy() {
+const xmlPromise = new Promise(function(resolve,reject) {
+const request = new XMLHttpRequest();
+	request.open('GET', 'https://jsonplaceholder.typicode.com/posts/1');
+	request.onload = function() {
+	//console.log('A');
+	if (request.status >= 200 && request.status < 300) {
+		resolve(request.responseText);
+	} else {
+	    reject(Error(request.statusText));
+		}
+	}
+	request.onerror = () => {
+    	reject(Error('Error fetching data.')); // error occurred, reject the  Promise
+  	};
+	request.send();
+	});
+xmlPromise.then(function(xmlData) {
+	console.log(xmlData);
+}).catch(function(err){
+	console.log(err);
+	});
 }
-
 </script>
