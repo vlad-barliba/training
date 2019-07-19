@@ -368,20 +368,6 @@ Although you can use them, for a more unique website, replace these images with 
 
             }
 
-
-            const request = new XMLHttpRequest();
-            request.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-
-                    console.log(this.responseText);
-                    console.log(this.responseXML);
-                    console.log(this.status);
-                    console.log(this.statusText);
-                  
-                }
-            };
-            request.open("GET", "https://jsonplaceholder.typicode.com/posts/1", true);
-            request.send();
         }
 
 
@@ -397,6 +383,37 @@ Although you can use them, for a more unique website, replace these images with 
             element.style.color = "white";
 
         }
+
+        function XMLrequest() {
+            const request = new XMLHttpRequest();
+
+            request.onreadystatechange = () => {
+                if (request.readyState == 4 && request.status == 200) {
+
+                }
+            }
+
+
+
+        }
+
+        const myPromise = new Promise((resolve, reject) => {
+            const request = new XMLHttpRequest();
+            request.open('GET', 'https://jsonplaceholder.typicode.com/posts/1');
+            request.onload = () => {
+                if (request.status === 200) {
+                    resolve(request.response);
+                } else {
+                    reject(Error(request.statusText));
+                }
+            };
+
+            request.send();
+        });
+
+        myPromise.then((data) => {
+            console.log(JSON.parse(data));
+        });
 
         changeColor();
 
