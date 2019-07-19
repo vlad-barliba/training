@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!-- Template by Quackit.com -->
 <!-- Images by various sources under the Creative Commons CC0 license and/or the Creative Commons Zero license. 
 Although you can use them, for a more unique website, replace these images with your own. -->
@@ -343,25 +343,27 @@ Although you can use them, for a more unique website, replace these images with 
 	{
 		element.style.color="pink";
         };
-    function request(){
-    	var promise=new Promise(function req(){
-    	var xhr= new XMLHttpRequest(),
-    	method="GET",
-    	url="https://jsonplaceholder.typicode.com/posts/1";
-    	
-    	xhr.onreadystatechange=function(){
-    		if(xhr.readyState===4){
-    			console.log(xhr.response);
-    		}
-    	}
-    	
-    	xhr.open(method,url,true);
-    	xhr.send('');
-});
-    	promise.then(function req(){
-    		console.log(xhr.response);
-    		//request();
-    	});
+    function request() {
+        let promise = new Promise(function (reject, resolve) {
+        const xhr = new XMLHttpRequest();
+            method = "GET",
+                url = "https://jsonplaceholder.typicode.com/posts/1";
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    resolve('Object' + xhr.response);
+                } else {
+                    reject('An error has occured');
+                }
+            }
+            xhr.open(method, url, true);
+            xhr.send();
+        });
+        promise.then(function (data) {
+            console.log(data);
+        }).catch(function (err) {
+            console.log(err);
+        });
 }
 </script>
 		
