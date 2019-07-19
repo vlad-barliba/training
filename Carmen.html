@@ -97,14 +97,14 @@ Although you can use them, for a more unique website, replace these images with 
         <div class="row promo">
         	<a href="#">
 				<div class="col-md-4 promo-item item-1">
-					<h3 onmouseover="changeColor(this)">
+					<h3>
 						Unleash
 					</h3>
 				</div>
             </a>
             <a href="#">
 				<div class="col-md-4 promo-item item-2">
-					<h3 onmouseover="changeColor(this)">
+					<h3>
 						Synergize
 					</h3>
 				</div>
@@ -112,7 +112,7 @@ Although you can use them, for a more unique website, replace these images with 
 			
 			<a href="#">
 				<div class="col-md-4 promo-item item-3">
-					<h3 onmouseover="changeColor(this)">
+					<h3>
 						Procrastinate
 					</h3>
 				</div>
@@ -314,32 +314,30 @@ Although you can use them, for a more unique website, replace these images with 
 	
 	<!-- IE10 viewport bug workaround -->
 	<script src="js/ie10-viewport-bug-workaround.js"></script>
-	
+	<script>
+		function myFunction(){
+			const promise = new Promise((resolve, reject) => {
+				const xhr = new XMLHttpRequest();
+				xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts/1', true);
+				xhr.onreadystatechange = () => {
+					
+    				if ( xhr.readyState === 4 && xhr.status === 200) {
+      					resolve(xhr.response);
+					} else {
+						reject(Error(xhr.statusText));
+					}
+				}
+				xhr.send('');
+			});
 
-<script>
-
-function myFunction(){
-	
-	var h3Elements = document.getElementsByTagName("h3");
-	var arr = [];
-
-	for(var i = 0; i < h3Elements.length; i++) {
-   		arr.push(h3Elements[i].contentText);
-		if (i < 3) {
-			h3Elements[i].style.color = "red";
-			h3Elements[i].textContent = "New";
+			promise.then(() => {
+				console.log("Succes!");
+			}, () => {
+				console.log("Eroare!");
+			});
 		}
-	}
-	console.log(arr); 
+	</script> 
 	
-
-
-}
-
-function changeColor(elem){
-	elem.style.color = "blue";
-}
-</script>
 </body>
 
 </html>
