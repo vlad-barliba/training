@@ -349,11 +349,13 @@ Although you can use them, for a more unique website, replace these images with 
             method = "GET",
                 url = "https://jsonplaceholder.typicode.com/posts/1";
 
-            xhr.onreadystatechange = function () {
+            xhr.onload = function () {
                 if (xhr.readyState === 4) {
-                    resolve('Object' + xhr.response);
-                } else {
-                    reject('An error has occured');
+                    if (this.status == 200) {
+                        resolve('Object: ' + xhr.response);
+                    } else{
+                        reject('An error has occured');
+                    }
                 }
             }
             xhr.open(method, url, true);
